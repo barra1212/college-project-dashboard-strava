@@ -5,16 +5,17 @@ queue()
 function makeGraphs(error, barryActivities) {
     var ndx = crossfilter(barryActivities);
     
-    show_type_balance(ndx);
+    show_gear_balance(ndx);
+    show_day_of_the_week_balance(ndx);
     
     dc.renderAll();
 }
 
-function show_type_balance(ndx) {
-    var dim = ndx.dimension(dc.pluck('type'));
+function show_gear_balance(ndx) {
+    var dim = ndx.dimension(dc.pluck('gear'));
     var group = dim.group();
     
-    dc.barChart("#type")
+    dc.barChart("#gear")
         .width(400)
         .height(200)
         .margins({top:10, right: 10, bottom: 30, left: 30})
@@ -24,7 +25,26 @@ function show_type_balance(ndx) {
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .elasticY(true)
-        .xAxisLabel("Type")
+        .xAxisLabel("Gear")
+        .yAxisLabel("Amount")
+        .yAxis().ticks(10);
+}
+
+function show_day_of_the_week_balance(ndx) {
+    var dim = ndx.dimension(dc.pluck('day_of_the_week'));
+    var group = dim.group();
+    
+    dc.barChart("#day_of_the_week")
+        .width(600)
+        .height(200)
+        .margins({top:10, right: 10, bottom: 30, left: 30})
+        .dimension(dim)
+        .group(group)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Day of the Week")
         .yAxisLabel("Amount")
         .yAxis().ticks(10);
 }

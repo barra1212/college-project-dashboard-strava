@@ -4,16 +4,23 @@ queue()
     
 function makeGraphs(error, barryActivities) {
     var ndx = crossfilter(barryActivities);
-    
+
+    var parseDate = d3.time.format("%m/%d/%Y").parse;
+    barryActivities.forEach(function(d){
+        d.date = parseDate(d.date);
+    });    
+
     barryActivities.forEach(function(d){
         d.distance_km = parseInt(d.distance_km);
         d.calories = parseInt(d.calories);
     })
-    
+
     show_gear_balance(ndx);
     show_day_of_the_week_balance(ndx);
     
     show_distance_to_calories_correlation(ndx);
+    
+    show_activity_distances(ndx);
     
     dc.renderAll();
 }
@@ -90,4 +97,23 @@ function show_distance_to_calories_correlation(ndx) {
         .dimension(calsDim)
         .group(distanceCaloriesGroup)
         .margins({top: 10, right: 50, bottom: 50, left: 60});
+}
+
+function show_activity_distances(ndx) {
+
+    var date_dim = ndx.dimension(dc.pluck('date'));
+    var total_distance_km_per_date = date_dim.group().reduceSum(dc.pluck('distance_km'));
+    var minDate = date_dim.bottom(1)[0].date;
+    var maxDate = date_dim.top(1)[0].date;
+    dc.lineChart("#distance")
+        .width(1000)
+        .height(300)
+        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .dimension(date_dim)
+        .group(total_distance_km_per_date)
+        .transitionDuration(500)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel("Distance")
+        .xAxisLabel("Month")
+        .yAxis().ticks(10);
 }

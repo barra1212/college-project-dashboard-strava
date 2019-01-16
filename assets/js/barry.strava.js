@@ -5,8 +5,15 @@ queue()
 function makeGraphs(error, barryActivities) {
     var ndx = crossfilter(barryActivities);
     
+    barryActivities.forEach(function(d){
+        d.distance_km = parseInt(d.distance_km);
+        d.calories = parseInt(d.calories);
+    })
+    
     show_gear_balance(ndx);
     show_day_of_the_week_balance(ndx);
+    
+    show_distance_to_calories_correlation(ndx);
     
     dc.renderAll();
 }
@@ -18,7 +25,7 @@ function show_gear_balance(ndx) {
     dc.barChart("#gear")
         .width(400)
         .height(200)
-        .margins({top:10, right: 10, bottom: 30, left: 30})
+        .margins({top:10, right: 10, bottom: 40, left: 30})
         .dimension(dim)
         .group(group)
         .transitionDuration(500)
@@ -37,7 +44,7 @@ function show_day_of_the_week_balance(ndx) {
     dc.barChart("#day_of_the_week")
         .width(600)
         .height(200)
-        .margins({top:10, right: 10, bottom: 30, left: 30})
+        .margins({top:10, right: 10, bottom: 40, left: 30})
         .dimension(dim)
         .group(group)
         .transitionDuration(500)
@@ -49,47 +56,38 @@ function show_day_of_the_week_balance(ndx) {
         .yAxis().ticks(10);
 }
 
-
-// // const Http = new XMLHttpRequest();
-// // const url='https://www.strava.com/api/v3/activities/{1655013} Authorization: Bearer 5e29c53673ecb5de42afa2c32b88a799c739edd3';
-// // Http.open("GET", url);
-// // Http.send();
-// // Http.onreadystatechange=(e)=>{
-// // console.log(Http.responseText)
-// // }
-
-
-// var chart = dc.scatterPlot('#distance');
-
-// d3.csv("data/barry.strava.csv", function(errors, distance) {
-//     var mycrossfilter = crossfilter(distance);
-
-//     // people.forEach(function(x) {
-//     //     if (x.male == 1) {
-//     //         x.gender = "Male";
-//     //     }
-//     //     else {
-//     //         x.gender = "Female";
-//     //     }
-//     // });
-
-//     var hwDimension = mycrossfilter.dimension(function(data) {
-//         return [Math.floor(data.date), Math.floor(data.distance)];
-//     });
-//     var hwGroup = hwDimension.group().reduceCount();
-
-//     chart
-//         .width(800)
-//         .height(600)
-//         .x(d3.scale.linear().domain([0, 200000]))
-//         .y(d3.scale.linear().domain([0, 200000]))
-//         .brushOn(false)
-//         .xAxisLabel("Date")
-//         .yAxisLabel("Distance")
-//         .symbolSize(8)
-//         .clipPadding(10)
-//         .dimension(hwDimension)
-//         .group(hwGroup);
-
-//     chart.render();
-// });
+function show_distance_to_calories_correlation(ndx) {
+    
+    var gearColors = d3.scale.ordinal()
+        .domain(["BeOne Mistral", "Orbea M20", "Voodoo Hoodoo"])
+        .range(["black", "orange", "red"]);
+    
+    var distDim = ndx.dimension(dc.pluck("distance_km"));
+    var calsDim = ndx.dimension(function(d) {
+        return [d.distance_km, d.calories, d.gear];
+    });
+    var distanceCaloriesGroup = calsDim.group();
+    
+    var minDistance = distDim.bottom(1)[0].distance_km;
+    var maxDistance = distDim.top(1)[0].distance_km;
+    
+    dc.scatterPlot("#distance_calories")
+        .width(600)
+        .height(400)
+        .x(d3.scale.linear().domain([minDistance, maxDistance]))
+        .brushOn(false)
+        .symbolSize(8)
+        .clipPadding(10)
+        .yAxisLabel("Calories")
+        .xAxisLabel("Activity Distance")
+        .title(function(d){
+            return "Distance of " + d.key[0] + "km burned " + d.key[1] + " calories";
+        })
+        .colorAccessor(function(d){
+            return d.key[2];
+        })
+        .colors(gearColors)
+        .dimension(calsDim)
+        .group(distanceCaloriesGroup)
+        .margins({top: 10, right: 50, bottom: 50, left: 60});
+}

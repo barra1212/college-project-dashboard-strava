@@ -1,5 +1,3 @@
-.number-box {
-    font-size: 64px;
-    text-align: center;
-    line-height: normal;
+div {
+    clear: left;
 }

@@ -59,6 +59,8 @@ function show_day_of_the_week_balance(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
     
+    console.log(dim);
+    
     dc.barChart("#day_of_the_week")
         .width(600)
         .height(200)

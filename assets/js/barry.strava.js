@@ -21,11 +21,18 @@ function makeGraphs(error, barryActivities) {
     show_distance_to_calories_correlation(ndx);
     
     show_activity_distances(ndx);
+
+    show_average_speed(ndx);
     
     dc.renderAll();
 }
 
 function show_gear_balance(ndx) {
+    
+    var gearColors = d3.scale.ordinal()
+        .domain(["BeOne Mistral", "Orbea M20", "Voodoo Hoodoo"])
+        .range(["black", "orange", "red"]);
+    
     var dim = ndx.dimension(dc.pluck('gear'));
     var group = dim.group();
     
@@ -33,6 +40,10 @@ function show_gear_balance(ndx) {
         .width(400)
         .height(200)
         .margins({top:10, right: 10, bottom: 40, left: 30})
+        .colorAccessor(function(d){
+            return d.key[2];
+        })
+        .colors(gearColors)
         .dimension(dim)
         .group(group)
         .transitionDuration(500)
@@ -100,7 +111,7 @@ function show_distance_to_calories_correlation(ndx) {
 }
 
 function show_activity_distances(ndx) {
-
+    
     var date_dim = ndx.dimension(dc.pluck('date'));
     var total_distance_km_per_date = date_dim.group().reduceSum(dc.pluck('distance_km'));
     var minDate = date_dim.bottom(1)[0].date;
@@ -114,6 +125,25 @@ function show_activity_distances(ndx) {
         .transitionDuration(500)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel("Distance")
+        .xAxisLabel("Month")
+        .yAxis().ticks(10);
+}
+
+function show_average_speed(ndx) {
+
+    var date_dim = ndx.dimension(dc.pluck('date'));
+    var total_average_speed_kmph_per_date = date_dim.group().reduceSum(dc.pluck('average_speed_kmph'));
+    var minDate = date_dim.bottom(1)[0].date;
+    var maxDate = date_dim.top(1)[0].date;
+    dc.lineChart("#average")
+        .width(1000)
+        .height(300)
+        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .dimension(date_dim)
+        .group(total_average_speed_kmph_per_date)
+        .transitionDuration(500)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel("Average Speed")
         .xAxisLabel("Month")
         .yAxis().ticks(10);
 }

@@ -58,10 +58,19 @@ function show_gear_balance(ndx) {
 function show_day_of_the_week_balance(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
-    
-    console.log(dim);
-    
+
+    // Sorts Days of the Week as desired
+    let scale = d3.scale.ordinal()
+        .domain(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
+        .range([0,1,2,3,4,5,6]);     
+
     dc.barChart("#day_of_the_week")
+
+    // Sorts Days of the Week as desired
+        .ordering(function (k) {
+            return scale(k.key);
+        })
+
         .width(600)
         .height(200)
         .margins({top:10, right: 10, bottom: 40, left: 30})

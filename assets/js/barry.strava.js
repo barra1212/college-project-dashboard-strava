@@ -155,7 +155,7 @@ function show_activity_distances(ndx) {
     var minDate = date_dim.bottom(1)[0].date;
     var maxDate = date_dim.top(1)[0].date;
     dc.lineChart("#distance")
-        .width(600)
+        .width(570)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(date_dim)
@@ -174,7 +174,7 @@ function show_average_speed(ndx) {
     var minDate = date_dim.bottom(1)[0].date;
     var maxDate = date_dim.top(1)[0].date;
     dc.lineChart("#average")
-        .width(600)
+        .width(570)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(date_dim)

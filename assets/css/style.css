@@ -46,16 +46,3 @@ video {
 .navbar-collapse.collapse.in {
   display: block!important;
 }
-
-
-/*Center align navbar menu */
-#navHeaderCollapse {
-    margin: auto;
-    width: 330px;
-}
-
-/*Center align hamburger icon */
-#hamburger {
-    margin: auto;
-    width: 75px;
-}

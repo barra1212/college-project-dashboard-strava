@@ -164,7 +164,7 @@ function show_activity_distances(ndx) {
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel("Distance of Activity")
         .xAxisLabel("Month")
-        .yAxis().ticks(10);
+        .yAxis().ticks(10)
 }
 
 function show_average_speed(ndx) {
@@ -184,26 +184,4 @@ function show_average_speed(ndx) {
         .yAxisLabel("Average Speed of Activity")
         .xAxisLabel("Month")
         .yAxis().ticks(10);
-}
-
-
-// 
-
-
-// When the user scrolls the page, execute myFunction 
-window.onscroll = function() {myFunction()};
-
-// Get the navbar
-var navbar = document.getElementById("navbar");
-
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
 }

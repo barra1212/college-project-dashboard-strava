@@ -9,6 +9,10 @@ div {
     clear: left;
 }
 
+.container-fluid {
+    padding: 0;
+}
+
 .navbar {
     background-color: #333333;
     margin-bottom: 15px;
@@ -34,6 +38,24 @@ video {
 
 #footer {
     text-align: center;
-    padding: 15px;
+    padding: 10px;
+    margin-top: 10px;
     background-color: #fc4c02;
+}
+
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+
+
+/*Center align navbar menu */
+#navHeaderCollapse {
+    margin: auto;
+    width: 330px;
+}
+
+/*Center align hamburger icon */
+#hamburger {
+    margin: auto;
+    width: 75px;
 }

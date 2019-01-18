@@ -18,6 +18,14 @@ Happy coding!
 The Cloud9 IDE team
 
 
+Activity Lines 19 & 20 removed because there were multiple activities that day.
+
+
+Hamburger menu not toggling
+https://stackoverflow.com/questions/25878450/bootstrap-collapsed-navbar-buggy-open
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
 
 
 $ http GET "https://www.strava.com/api/v3/activities/{id}?include_all_efforts=" "Authorization: Bearer [[token]]"

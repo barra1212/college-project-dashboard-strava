@@ -73,8 +73,8 @@ function show_day_of_the_week_balance(ndx) {
             return scale(k.key);
         })
 
-        .width(760)
-        .height(300)
+        .width(700)
+        .height(350)
         .margins({top:10, right: 10, bottom: 40, left: 30})
         .dimension(dim)
         .group(group)
@@ -105,8 +105,8 @@ function show_day_of_the_week(ndx) {
             return scale(k.key);
         })
 
-        .height(500)
-        .radius(250)
+        .height(350)
+        .radius(200)
         .transitionDuration(1500)
         .dimension(dim)
         .group(group)

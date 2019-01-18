@@ -37,8 +37,8 @@ function show_gear_balance(ndx) {
     var group = dim.group();
     
     dc.barChart("#gear")
-        .width(400)
-        .height(200)
+        .width(500)
+        .height(300)
         .margins({top:10, right: 10, bottom: 40, left: 30})
         .colorAccessor(function(d){
             return d.key[2];
@@ -71,8 +71,8 @@ function show_day_of_the_week_balance(ndx) {
             return scale(k.key);
         })
 
-        .width(600)
-        .height(200)
+        .width(760)
+        .height(300)
         .margins({top:10, right: 10, bottom: 40, left: 30})
         .dimension(dim)
         .group(group)
@@ -101,7 +101,7 @@ function show_distance_to_calories_correlation(ndx) {
     var maxDistance = distDim.top(1)[0].distance_km;
     
     dc.scatterPlot("#distance_calories")
-        .width(600)
+        .width(760)
         .height(400)
         .x(d3.scale.linear().domain([minDistance, maxDistance]))
         .brushOn(false)

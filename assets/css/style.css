@@ -10,7 +10,7 @@ div {
 }
 
 .navbar {
-    background-color: black;
+    background-color: #333333;
     margin-bottom: 15px;
 }
 
@@ -32,3 +32,8 @@ video {
 	width: 550px;
 }
 
+#footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #fc4c02;
+}

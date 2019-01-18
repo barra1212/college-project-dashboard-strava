@@ -88,7 +88,6 @@ function show_day_of_the_week_balance(ndx) {
 }
 
 
-// Pie Chart Experiment
 function show_day_of_the_week(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
@@ -156,7 +155,7 @@ function show_activity_distances(ndx) {
     var minDate = date_dim.bottom(1)[0].date;
     var maxDate = date_dim.top(1)[0].date;
     dc.lineChart("#distance")
-        .width(1000)
+        .width(600)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(date_dim)
@@ -175,7 +174,7 @@ function show_average_speed(ndx) {
     var minDate = date_dim.bottom(1)[0].date;
     var maxDate = date_dim.top(1)[0].date;
     dc.lineChart("#average")
-        .width(1000)
+        .width(600)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(date_dim)

@@ -18,6 +18,21 @@ div {
     margin-bottom: 15px;
 }
 
+.stravabadge {
+    display:inline-block;
+    background-color:#FC4C02;
+    color:#fff;
+    padding:5px 10px 5px 30px;
+    font-size:11px;
+    font-family:Helvetica, Arial, sans-serif;
+    white-space:nowrap;
+    text-decoration:none;
+    background-repeat:no-repeat;
+    background-position:10px center;
+    border-radius:3px;
+    background-image:url("../../images/logo-strava-echelon.png");
+}
+
 .center {
 	margin: 0 auto;
 }

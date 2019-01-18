@@ -52,8 +52,8 @@ function show_gear_balance(ndx) {
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .elasticY(true)
-        .xAxisLabel("Gear")
-        .yAxisLabel("Amount")
+        .xAxisLabel("Which Bicycle?")
+        .yAxisLabel("Amount of Activities")
         .yAxis().ticks(10);
 }
 
@@ -83,7 +83,7 @@ function show_day_of_the_week_balance(ndx) {
         .xUnits(dc.units.ordinal)
         .elasticY(true)
         .xAxisLabel("Day of the Week")
-        .yAxisLabel("Amount")
+        .yAxisLabel("Amount of Activities")
         .yAxis().ticks(10);
 }
 
@@ -134,7 +134,7 @@ function show_distance_to_calories_correlation(ndx) {
         .brushOn(false)
         .symbolSize(8)
         .clipPadding(10)
-        .yAxisLabel("Calories")
+        .yAxisLabel("Calories Burned")
         .xAxisLabel("Activity Distance")
         .title(function(d){
             return "Distance of " + d.key[0] + "km burned " + d.key[1] + " calories";
@@ -162,7 +162,7 @@ function show_activity_distances(ndx) {
         .group(total_distance_km_per_date)
         .transitionDuration(500)
         .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel("Distance")
+        .yAxisLabel("Distance of Activity")
         .xAxisLabel("Month")
         .yAxis().ticks(10);
 }
@@ -181,7 +181,7 @@ function show_average_speed(ndx) {
         .group(total_average_speed_kmph_per_date)
         .transitionDuration(500)
         .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel("Average Speed")
+        .yAxisLabel("Average Speed of Activity")
         .xAxisLabel("Month")
         .yAxis().ticks(10);
 }

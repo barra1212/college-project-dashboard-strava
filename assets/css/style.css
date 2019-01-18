@@ -1,3 +1,10 @@
+body {
+    background-image: url("../../images/footer-img.png");
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:bottom;
+}
+
 div {
     clear: left;
 }
@@ -24,3 +31,4 @@ div {
 video {
 	width: 550px;
 }
+

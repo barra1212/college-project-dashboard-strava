@@ -24,6 +24,8 @@ function makeGraphs(error, barryActivities) {
 
     show_average_speed(ndx);
     
+    show_day_of_the_week(ndx);
+    
     dc.renderAll();
 }
 
@@ -84,6 +86,32 @@ function show_day_of_the_week_balance(ndx) {
         .yAxisLabel("Amount")
         .yAxis().ticks(10);
 }
+
+
+// Pie Chart Experiment
+function show_day_of_the_week(ndx) {
+    var dim = ndx.dimension(dc.pluck('day_of_the_week'));
+    var group = dim.group();
+
+    // Sorts Days of the Week as desired
+    let scale = d3.scale.ordinal()
+        .domain(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
+        .range([0,1,2,3,4,5,6]);     
+
+    dc.pieChart('#day_of_the_week_pie')
+    
+    // Sorts Days of the Week as desired
+        .ordering(function (k) {
+            return scale(k.key);
+        })
+
+        .height(500)
+        .radius(250)
+        .transitionDuration(1500)
+        .dimension(dim)
+        .group(group)
+}
+
 
 function show_distance_to_calories_correlation(ndx) {
     

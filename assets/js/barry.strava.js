@@ -164,7 +164,8 @@ function show_activity_distances(ndx) {
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel("Distance of Activity")
         .xAxisLabel("Month")
-        .yAxis().ticks(10)
+        .brushOn(false)
+        .yAxis().ticks(10);
 }
 
 function show_average_speed(ndx) {
@@ -183,5 +184,6 @@ function show_average_speed(ndx) {
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel("Average Speed of Activity")
         .xAxisLabel("Month")
+        .brushOn(false)
         .yAxis().ticks(10);
 }

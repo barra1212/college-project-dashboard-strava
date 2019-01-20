@@ -61,3 +61,33 @@ video {
 .navbar-collapse.collapse.in {
   display: block!important;
 }
+
+#accident {
+    margin: 20px 0px 20px 0px;
+}
+
+circle.dot {
+    fill-opacity: 100 !important;
+    r: 3 !important;
+}
+
+#distance > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69) {
+    fill: black !important;
+    fill-opacity: 100 !important;
+    r: 7 !important;
+}
+
+#average > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69) {
+    fill: black !important;
+    fill-opacity: 100 !important;
+    r: 7 !important;
+}
+
+#distance > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69):hover {
+    fill: #ff0000 !important;
+}
+
+#average > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69):hover {
+    fill: #ff0000 !important;
+}
+

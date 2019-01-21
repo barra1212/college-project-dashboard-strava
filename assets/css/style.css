@@ -1,3 +1,4 @@
+/*Background image at the foot of the page*/
 body {
     background-image: url("../../images/footer-img.png");
     background-repeat:no-repeat;
@@ -5,19 +6,23 @@ body {
     background-position:bottom;
 }
 
-div {
-    clear: left;
-}
-
+/*Delete default Bootstrap container fluid padding*/
 .container-fluid {
     padding: 0;
 }
 
+/*Bespoke navbar background colour and margin bottom*/
 .navbar {
     background-color: #333333;
     margin-bottom: 15px;
 }
 
+/*Center all Headings*/
+h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+}
+
+/*Strava badge inline styles transferred to stylesheet*/
 .stravabadge {
     display:inline-block;
     background-color:#FC4C02;
@@ -26,31 +31,42 @@ div {
     font-size:11px;
     font-family:Helvetica, Arial, sans-serif;
     white-space:nowrap;
-    text-decoration:none;
+    text-decoration:none !important;
     background-repeat:no-repeat;
     background-position:10px center;
     border-radius:3px;
     background-image:url("../../images/logo-strava-echelon.png");
 }
 
+/*Strava badge inline styles transferred to stylesheet*/
+.stravalogo {
+    margin-left:2px;
+    vertical-align:text-bottom;
+}
+
+/*Centre style*/
 .center {
 	margin: 0 auto;
 }
 
+/*Change default Bootstrap card class border*/
 .card {
 	border: none;
 }
 
+/*Change default Bootstrap card-img-top class style*/
 .card-img-top {
     width: 90%;
 	margin: 0 auto;
 	border: none;
 }
 
+/*Set video width*/
 video {
 	width: 550px;
 }
 
+/*Footer Style*/
 #footer {
     text-align: center;
     padding: 10px;
@@ -58,36 +74,32 @@ video {
     background-color: #fc4c02;
 }
 
+/*Correct issue where hamburger menu button was opening and closing on one click*/
 .navbar-collapse.collapse.in {
   display: block!important;
 }
 
+/*Bespoke margin top/bottom on accident div*/
 #accident {
     margin: 20px 0px 20px 0px;
 }
 
+/*Change default dot size/style on line charts*/
 circle.dot {
-    fill-opacity: 100 !important;
-    r: 3 !important;
+    fill-opacity: 1 !important;
+    r: 3 !important
 }
 
+/*Change default dot size/style on line chart dot (69) related to accident*/
 #distance > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69) {
-    fill: black !important;
-    fill-opacity: 100 !important;
+    fill: #ff0000 !important;
+    fill-opacity: 1 !important;
     r: 7 !important;
 }
 
+/*Change default dot size/style on line chart dot (69) related to accident*/
 #average > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69) {
-    fill: black !important;
-    fill-opacity: 100 !important;
+    fill: #ff0000 !important;
+    fill-opacity: 1 !important;
     r: 7 !important;
 }
-
-#distance > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69):hover {
-    fill: #ff0000 !important;
-}
-
-#average > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69):hover {
-    fill: #ff0000 !important;
-}
-

@@ -29,15 +29,14 @@ function makeGraphs(error, barryActivities) {
     dc.renderAll();
 }
 
+
+// Amount of activities per each bike (gear) owned
 function show_gear_balance(ndx) {
-    
     var gearColors = d3.scale.ordinal()
         .domain(["BeOne Mistral", "Orbea M20", "Voodoo Hoodoo"])
         .range(["black", "orange", "red"]);
-    
     var dim = ndx.dimension(dc.pluck('gear'));
     var group = dim.group();
-    
     dc.barChart("#gear")
         .width(500)
         .height(300)
@@ -57,22 +56,22 @@ function show_gear_balance(ndx) {
         .yAxis().ticks(10);
 }
 
+
+// Amount of activities per day of the week Bar Chart
 function show_day_of_the_week_balance(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
-
-    // Sorts Days of the Week as desired
+// Credit Niel @ Code Institute below. Sorts Days of the Week as desired
     let scale = d3.scale.ordinal()
         .domain(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
         .range([0,1,2,3,4,5,6]);     
-
+// Credit Niel @ Code Institute above. Sorts Days of the Week as desired
     dc.barChart("#day_of_the_week")
-
-    // Sorts Days of the Week as desired
+// Credit Niel @ Code Institute below. Sorts Days of the Week as desired
         .ordering(function (k) {
             return scale(k.key);
         })
-
+// Credit Niel @ Code Institute above. Sorts Days of the Week as desired
         .width(700)
         .height(350)
         .margins({top:10, right: 10, bottom: 40, left: 30})
@@ -88,45 +87,41 @@ function show_day_of_the_week_balance(ndx) {
 }
 
 
+//  Amount of activities per day of the week Pie Chart
 function show_day_of_the_week(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
-
-    // Sorts Days of the Week as desired
+//  Credit Niel @ Code Institute below. Sorts Days of the Week as desired
     let scale = d3.scale.ordinal()
         .domain(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
         .range([0,1,2,3,4,5,6]);     
-
+//  Credit Niel @ Code Institute above. Sorts Days of the Week as desired
     dc.pieChart('#day_of_the_week_pie')
-    
-    // Sorts Days of the Week as desired
-        .ordering(function (k) {
-            return scale(k.key);
-        })
-
         .height(350)
         .radius(200)
         .transitionDuration(1500)
+//  Credit Niel @ Code Institute below. Sorts Days of the Week as desired
+        .ordering(function (k) {
+            return scale(k.key);
+        })
+//  Credit Niel @ Code Institute above. Sorts Days of the Week as desired
         .dimension(dim)
         .group(group)
 }
 
 
+//  Correlation between distance of activity and calorie burned scatter plot
 function show_distance_to_calories_correlation(ndx) {
-    
     var gearColors = d3.scale.ordinal()
         .domain(["BeOne Mistral", "Orbea M20", "Voodoo Hoodoo"])
         .range(["black", "orange", "red"]);
-    
     var distDim = ndx.dimension(dc.pluck("distance_km"));
     var calsDim = ndx.dimension(function(d) {
         return [d.distance_km, d.calories, d.gear];
     });
     var distanceCaloriesGroup = calsDim.group();
-    
     var minDistance = distDim.bottom(1)[0].distance_km;
     var maxDistance = distDim.top(1)[0].distance_km;
-    
     dc.scatterPlot("#distance_calories")
         .width(760)
         .height(400)
@@ -148,8 +143,9 @@ function show_distance_to_calories_correlation(ndx) {
         .margins({top: 10, right: 50, bottom: 50, left: 60});
 }
 
+
+// Distances of all activities Line Chart
 function show_activity_distances(ndx) {
-    
     var date_dim = ndx.dimension(dc.pluck('date'));
     var total_distance_km_per_date = date_dim.group().reduceSum(dc.pluck('distance_km'));
     var minDate = date_dim.bottom(1)[0].date;
@@ -168,8 +164,9 @@ function show_activity_distances(ndx) {
         .yAxis().ticks(10);
 }
 
-function show_average_speed(ndx) {
 
+// Average Speed of all activities Line Chart
+function show_average_speed(ndx) {
     var date_dim = ndx.dimension(dc.pluck('date'));
     var total_average_speed_kmph_per_date = date_dim.group().reduceSum(dc.pluck('average_speed_kmph'));
     var minDate = date_dim.bottom(1)[0].date;
@@ -188,7 +185,8 @@ function show_average_speed(ndx) {
         .yAxis().ticks(10);
 }
 
+
+// Reload Page button function
 function reloadPage(){
-    window.location.reload()
-    img.src = "your_image_url.gif"+"?a="+Math.random();
+    window.location.reload();
 }

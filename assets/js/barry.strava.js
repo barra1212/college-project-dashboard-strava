@@ -189,5 +189,6 @@ function show_average_speed(ndx) {
 }
 
 function reloadPage(){
-    window.location.reload();
+    window.location.reload()
+    img.src = "your_image_url.gif"+"?a="+Math.random();
 }

@@ -1,8 +1,26 @@
-# Your Project's Name
+# Barry's Strava 2018
 
-One or two paragraphs providing an overview of your project.
+My Interactive Frontend Development project App is inpsired by my own cycling experiences and the current Apps that I use to track my progress and save my history.
 
-Essentially, this part is your sales pitch.
+I use [Strava](https://www.strava.com)
+
+Strava is a social fitness network that is primarily used to track cycling and running using GPS data. Strava allows you to share your activities with some key data displayed as well as images, but no correlations.
+
+I use [VeloViewer](https://www.veloviewer.com)
+
+Strava spin-off Veloviewer started out as a software side project and ended up being adopted by the pro peloton. When creator Ben Lowe’s wife fell pregnant with their second child in 2012, the understandable early nights for his spouse meant Lowe had plenty of time to revive his passion and get into web development once again.
+
+VeloViewer is an alternate Strava dashboard offering full, filterable lists of your activities and current segment placings. High level overviews of your progress along with the ability to dive deeper into your activity data with interactive visualisations lets you get the most from your efforts. Veloviewer allows you to delve deep into your Strava data, study segments, leaderboards, etc., but it is all data, and nothing emotive or personal, i.e. personal text/notes, photos, etc.
+
+My App, for use by athletes at year end, would combine both data and a user’s preferred images/text to make - yes, a data driven app, but also one which can tell a story by allowing a user to add their own detail (text, images) and their own first hand (and data driven) analysis of their year.
+
+Strava’s year end videos (as displayed in my App) are nice and widely shared, but I think my tailored year end experience App would be shared and saved for posterity much more.
+
+Cyclists love sharing their activities, but also love showing off their rides.
+My app would allow users to highlight their equipment front & centre.
+
+My App is more like a diary entry of a users year in data,
+by allowing users to add text, images and emotions.
  
 ## UX
  

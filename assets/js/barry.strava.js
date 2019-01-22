@@ -187,3 +187,7 @@ function show_average_speed(ndx) {
         .brushOn(false)
         .yAxis().ticks(10);
 }
+
+function reloadPage(){
+    window.location.reload();
+}

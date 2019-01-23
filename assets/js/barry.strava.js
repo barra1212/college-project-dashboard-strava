@@ -1,31 +1,31 @@
 queue()
     .defer(d3.csv, "data/barry.strava.csv")
     .await(makeGraphs);
-    
+
 function makeGraphs(error, barryActivities) {
     var ndx = crossfilter(barryActivities);
 
     var parseDate = d3.time.format("%m/%d/%Y").parse;
-    barryActivities.forEach(function(d){
+    barryActivities.forEach(function(d) {
         d.date = parseDate(d.date);
-    });    
+    });
 
-    barryActivities.forEach(function(d){
+    barryActivities.forEach(function(d) {
         d.distance_km = parseInt(d.distance_km);
         d.calories = parseInt(d.calories);
     })
 
     show_gear_balance(ndx);
     show_day_of_the_week_balance(ndx);
-    
+
     show_distance_to_calories_correlation(ndx);
-    
+
     show_activity_distances(ndx);
 
     show_average_speed(ndx);
-    
+
     show_day_of_the_week(ndx);
-    
+
     dc.renderAll();
 }
 
@@ -40,8 +40,8 @@ function show_gear_balance(ndx) {
     dc.barChart("#gear")
         .width(500)
         .height(300)
-        .margins({top:10, right: 10, bottom: 40, left: 30})
-        .colorAccessor(function(d){
+        .margins({ top: 10, right: 10, bottom: 40, left: 30 })
+        .colorAccessor(function(d) {
             return d.key[2];
         })
         .colors(gearColors)
@@ -61,20 +61,20 @@ function show_gear_balance(ndx) {
 function show_day_of_the_week_balance(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
-// Credit Niel @ Code Institute below. Sorts Days of the Week as desired
+    // Credit Niel @ Code Institute below. Sorts Days of the Week as desired
     let scale = d3.scale.ordinal()
         .domain(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
-        .range([0,1,2,3,4,5,6]);     
-// Credit Niel @ Code Institute above. Sorts Days of the Week as desired
+        .range([0, 1, 2, 3, 4, 5, 6]);
+    // Credit Niel @ Code Institute above. Sorts Days of the Week as desired
     dc.barChart("#day_of_the_week")
-// Credit Niel @ Code Institute below. Sorts Days of the Week as desired
-        .ordering(function (k) {
+        // Credit Niel @ Code Institute below. Sorts Days of the Week as desired
+        .ordering(function(k) {
             return scale(k.key);
         })
-// Credit Niel @ Code Institute above. Sorts Days of the Week as desired
+        // Credit Niel @ Code Institute above. Sorts Days of the Week as desired
         .width(700)
         .height(350)
-        .margins({top:10, right: 10, bottom: 40, left: 30})
+        .margins({ top: 10, right: 10, bottom: 40, left: 30 })
         .dimension(dim)
         .group(group)
         .transitionDuration(500)
@@ -91,20 +91,20 @@ function show_day_of_the_week_balance(ndx) {
 function show_day_of_the_week(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
-//  Credit Niel @ Code Institute below. Sorts Days of the Week as desired
+    //  Credit Niel @ Code Institute below. Sorts Days of the Week as desired
     let scale = d3.scale.ordinal()
         .domain(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
-        .range([0,1,2,3,4,5,6]);     
-//  Credit Niel @ Code Institute above. Sorts Days of the Week as desired
+        .range([0, 1, 2, 3, 4, 5, 6]);
+    //  Credit Niel @ Code Institute above. Sorts Days of the Week as desired
     dc.pieChart('#day_of_the_week_pie')
         .height(350)
         .radius(200)
         .transitionDuration(1500)
-//  Credit Niel @ Code Institute below. Sorts Days of the Week as desired
-        .ordering(function (k) {
+        //  Credit Niel @ Code Institute below. Sorts Days of the Week as desired
+        .ordering(function(k) {
             return scale(k.key);
         })
-//  Credit Niel @ Code Institute above. Sorts Days of the Week as desired
+        //  Credit Niel @ Code Institute above. Sorts Days of the Week as desired
         .dimension(dim)
         .group(group)
 }
@@ -131,16 +131,16 @@ function show_distance_to_calories_correlation(ndx) {
         .clipPadding(10)
         .yAxisLabel("Calories Burned")
         .xAxisLabel("Activity Distance")
-        .title(function(d){
+        .title(function(d) {
             return "Distance of " + d.key[0] + "km burned " + d.key[1] + " calories";
         })
-        .colorAccessor(function(d){
+        .colorAccessor(function(d) {
             return d.key[2];
         })
         .colors(gearColors)
         .dimension(calsDim)
         .group(distanceCaloriesGroup)
-        .margins({top: 10, right: 50, bottom: 50, left: 60});
+        .margins({ top: 10, right: 50, bottom: 50, left: 60 });
 }
 
 
@@ -153,11 +153,11 @@ function show_activity_distances(ndx) {
     dc.lineChart("#distance")
         .width(570)
         .height(300)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .margins({ top: 10, right: 50, bottom: 30, left: 50 })
         .dimension(date_dim)
         .group(total_distance_km_per_date)
         .transitionDuration(500)
-        .x(d3.time.scale().domain([minDate,maxDate]))
+        .x(d3.time.scale().domain([minDate, maxDate]))
         .yAxisLabel("Distance of Activity")
         .xAxisLabel("Month")
         .brushOn(false)
@@ -174,11 +174,11 @@ function show_average_speed(ndx) {
     dc.lineChart("#average")
         .width(570)
         .height(300)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .margins({ top: 10, right: 50, bottom: 30, left: 50 })
         .dimension(date_dim)
         .group(total_average_speed_kmph_per_date)
         .transitionDuration(500)
-        .x(d3.time.scale().domain([minDate,maxDate]))
+        .x(d3.time.scale().domain([minDate, maxDate]))
         .yAxisLabel("Average Speed of Activity")
         .xAxisLabel("Month")
         .brushOn(false)
@@ -187,6 +187,6 @@ function show_average_speed(ndx) {
 
 
 // Reload Page button function
-function reloadPage(){
+function reloadPage() {
     window.location.reload();
 }

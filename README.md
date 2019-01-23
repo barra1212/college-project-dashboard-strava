@@ -139,6 +139,10 @@ extension in Firefox.
 - CSS code checked with validator.W3.org returns one error
     - Property **r** doesn't exist - This is related to pin pointing one specific data point and styling with bespoke CSS. Property **r** may not exist, but it does work.
 
+- Javascript checked through JSHint.com
+    - One warning - 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+    - The related code snippet (barry.strava.js lines 65 & 95) was provided by Tutor Support so am assuming it is a false positive and no action required.
+
 ##### Bug
 
 - A bug that encountered was with the Bootswatch template I used, where the hamburger menu button collapse feature did not work as desired. On click the menu opened, but closed straight away.

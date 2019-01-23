@@ -1,47 +1,55 @@
 /*----------------------------------------------HEADER*/
 
 /*Bespoke navbar background colour and margin bottom*/
+
 .navbar {
     background-color: #333333;
     margin-bottom: 15px;
 }
 
 /*Correct issue where hamburger menu button was opening and closing on one click*/
+
 /*CREDIT: https://stackoverflow.com/questions/25878450/bootstrap-collapsed-navbar-buggy-open*/
+
 .navbar-collapse.collapse.in {
-  display: block!important;
+    display: block!important;
 }
 
 /*Strava badge inline styles transferred to stylesheet*/
+
 .stravabadge {
-    display:inline-block;
-    background-color:#FC4C02;
-    color:#fff;
-    padding:5px 10px 5px 30px;
-    font-size:11px;
-    font-family:Helvetica, Arial, sans-serif;
-    white-space:nowrap;
-    text-decoration:none !important;
-    background-repeat:no-repeat;
-    background-position:10px center;
-    border-radius:3px;
-    background-image:url("../../images/logo-strava-echelon.png");
+    display: inline-block;
+    background-color: #FC4C02;
+    color: #fff;
+    padding: 5px 10px 5px 30px;
+    font-size: 11px;
+    font-family: Helvetica, Arial, sans-serif;
+    white-space: nowrap;
+    text-decoration: none !important;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    border-radius: 3px;
+    background-image: url("../../images/logo-strava-echelon.png");
 }
 
 /*Strava badge inline styles transferred to stylesheet*/
+
 .stravalogo {
-    margin-left:2px;
-    vertical-align:text-bottom;
+    margin-left: 2px;
+    vertical-align: text-bottom;
 }
 
 /*Bespoke styling of Reload Page button*/
+
 #reloadPage {
     position: fixed;
     top: 6%;
     bottom: 94%;
     right: 20px;
-    z-index: 99; /* Make sure it does not overlap */
-    cursor: pointer; /* Add a mouse pointer on hover */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
 }
 
 
@@ -49,7 +57,13 @@
 /*----------------------------------------------TYPOGRAPHY*/
 
 /*Center all Headings*/
-h1,h2,h3,h4,h5,h6 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     text-align: center;
 }
 
@@ -58,70 +72,80 @@ h1,h2,h3,h4,h5,h6 {
 /*----------------------------------------------BODY*/
 
 /*Delete default Bootstrap container fluid padding*/
+
 .container-fluid {
     padding: 0;
 }
 
 /*Change default Bootstrap card class border*/
+
 .card {
-	border: none;
+    border: none;
 }
 
 /*Change default Bootstrap card-img-top class style*/
+
 .card-img-top {
     width: 90%;
-	border: none;
+    border: none;
 }
 
 /*Set video width and center*/
+
 video {
-	width: 100%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /*Bespoke margin top/bottom on accident div*/
+
 #accident {
     margin: 20px 0px 20px 0px;
 }
 
 /*Centre image divs*/
+
 img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*Change default dot size/style on line charts*/
+
 circle.dot {
     fill-opacity: 1 !important;
     r: 3 !important
 }
 
 /*Change default dot size/style on line chart dot (69) related to accident*/
-#distance > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69) {
+
+#distance>svg>g>g.chart-body>g.dc-tooltip-list>g>circle:nth-child(69) {
     fill: #ff0000 !important;
     fill-opacity: 1 !important;
     r: 7 !important;
 }
 
 /*Change default dot size/style on line chart dot (69) related to accident*/
-#average > svg > g > g.chart-body > g.dc-tooltip-list > g > circle:nth-child(69) {
+
+#average>svg>g>g.chart-body>g.dc-tooltip-list>g>circle:nth-child(69) {
     fill: #ff0000 !important;
     fill-opacity: 1 !important;
     r: 7 !important;
 }
 
 /*Background image at the foot of the page*/
+
 body {
     background-image: url("../../images/footer-img.png");
-    background-repeat:no-repeat;
-    background-size:contain;
-    background-position:bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
 }
 
 
@@ -129,6 +153,7 @@ body {
 /*----------------------------------------------FOOTER*/
 
 /*Footer Style*/
+
 #footer {
     text-align: center;
     padding: 10px;

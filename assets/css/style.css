@@ -43,8 +43,8 @@
 
 #reloadPage {
     position: fixed;
-    top: 6%;
-    bottom: 94%;
+    top: 10%;
+    bottom: 90%;
     right: 20px;
     z-index: 99;
     /* Make sure it does not overlap */

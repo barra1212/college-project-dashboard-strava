@@ -13,7 +13,7 @@ function makeGraphs(error, barryActivities) {
     barryActivities.forEach(function(d) {
         d.distance_km = parseInt(d.distance_km);
         d.calories = parseInt(d.calories);
-    })
+    });
 
     show_gear_balance(ndx);
     show_day_of_the_week_balance(ndx);
@@ -62,7 +62,7 @@ function show_day_of_the_week_balance(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
     // Credit Niel @ Code Institute below. Sorts Days of the Week as desired
-    let scale = d3.scale.ordinal()
+    var scale = d3.scale.ordinal()
         .domain(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
         .range([0, 1, 2, 3, 4, 5, 6]);
     // Credit Niel @ Code Institute above. Sorts Days of the Week as desired
@@ -92,7 +92,7 @@ function show_day_of_the_week(ndx) {
     var dim = ndx.dimension(dc.pluck('day_of_the_week'));
     var group = dim.group();
     //  Credit Niel @ Code Institute below. Sorts Days of the Week as desired
-    let scale = d3.scale.ordinal()
+    var scale = d3.scale.ordinal()
         .domain(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
         .range([0, 1, 2, 3, 4, 5, 6]);
     //  Credit Niel @ Code Institute above. Sorts Days of the Week as desired
@@ -106,7 +106,7 @@ function show_day_of_the_week(ndx) {
         })
         //  Credit Niel @ Code Institute above. Sorts Days of the Week as desired
         .dimension(dim)
-        .group(group)
+        .group(group);
 }
 
 

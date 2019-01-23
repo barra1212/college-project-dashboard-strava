@@ -77,6 +77,12 @@ h6 {
     padding: 0;
 }
 
+/*Add section margin top*/
+
+section {
+    margin-top: 2em;
+}
+
 /*Change default Bootstrap card class border*/
 
 .card {

@@ -22,7 +22,7 @@ My App would allow users to highlight their equipment front & centre.
 My App is more like a diary entry of a users year in data,
 by allowing users to add text, images and emotions.
 
-https://github.com/barra1212/college-project-dashboard-strava/blob/master/documentation/Barrys-Strava-2018-Project-Plan.pdf
+https://github.com/barra1212/college-project-dashboard-strava/blob/master/documentation/Barry-Cunningham-IFD-Project-Plan.pdf
 
 <hr/>
 
@@ -36,50 +36,37 @@ https://github.com/barra1212/college-project-dashboard-strava/blob/master/docume
 
 - John is PRO of a large cycling club who have been awarded the hosting of the Munster Cycling Championships. He wants a platform where he can publish the results of the event, along with images and the impressive data of the overall winners and various category (speed, climbing, averages, power, etc.) winners.
 
-https://github.com/barra1212/college-project-dashboard-strava/blob/master/documentation/Barrys-Strava-2018-User-Stories.pdf
-
 #### Design Considerations
 
-Strava’s branding is predominantly white (clean) and
-their logo is orange. My design will piggy back on the
-success of their branding which is widely recognised.
-Using orange, which is a favourite colour of mine is a
-win-win in my opinion.
+Strava’s branding is predominantly white (clean) and their logo is orange. My design will piggy back on the success of their branding which is widely recognised. Using orange, which is a favourite colour of mine is a win-win in my opinion.
 
-Design will be clean bootstrap with minimum
-decoration or straying from this minimalistic layout.
-The only bespoke design will be a reloadPage button
-which will hover and animate at top right of browser
-window on all devices. Animation will be enough for
-users to know it’s there, but not so much that it is an
-annoyance.
+Design will be clean with minimum decoration or straying from a minimalistic layout. The only bespoke design will be a reloadPage button which will hover and animate at top right of browser window on all devices. Animation will be enough for users to know it’s there, but not so much that it is an annoyance.
 
-Minimal use of colour will also be added to D3
-element’s out-of-the-box styling. Enough to make
-the design my own, but not taking from the tried and
-tested defaults.
+Minimal use of colour will also be added to D3 element’s out-of-the-box styling. Enough to make the design my own, but not taking from the tried and tested defaults.
 
-Use of my own language/story and neatly placed
-“real” images at the foot of the App will convey to the
-user that this is indeed a real diary of a real person’s
-real activities, ... and that they can have the very
-same and more if they choose to use the App.
+Use of my own language/story and neatly placed “real” images at the foot of the App will convey to the user that this is indeed a real diary of a real person’s real activities, ... and that they can have the very same and more if they choose to use the App.
 
-https://github.com/barra1212/college-project-dashboard-strava/blob/master/documentation/Barrys-Strava-2018-Design-Considerations.pdf
+![Design Considerations](/documentation/Barrys-Strava-2018-Design-Considerations.png)
 
 #### Responsive Design
 
-The App is designed to work on all devices.
+The App is designed to work on all devices, with the caveat that D3 charts are not responsive.
 
 Proposed layout -
-https://github.com/barra1212/college-project-dashboard-strava/blob/master/documentation/Barrys-Strava-2018-Responsive-Layout.pdf
+
+![Mobile Layout](/documentation/Barrys-Strava-2018-Responsive-Layout-1.png)
+
+![Tablet Layout](/documentation/Barrys-Strava-2018-Responsive-Layout-2.png)
+
+![Desktop Layout](/documentation/Barrys-Strava-2018-Responsive-Layout-3.png)
+
 
 ## Features
 
 ##### Navigation
 - Simple one page App. Navigation by way of HTML anchor links to various points on the page.
 
-https://github.com/barra1212/college-project-dashboard-strava/blob/master/documentation/Barrys-Strava-2018-Navigation.pdf
+![Navigation](/documentation/Barrys-Strava-2018-Navigation.png)
 
 ##### Reset / Reload Page
 
@@ -137,17 +124,15 @@ extension in Firefox.
     - Document checking completed. No errors or warnings to show.
 
 - CSS code checked with validator.W3.org returns one error
-    - Property **r** doesn't exist - This is related to pin pointing one specific data point and styling with bespoke CSS. Property **r** may not exist, but it does work.
+    - Property **r** (radius of SVG circle) doesn't exist - This is related to pin pointing one specific data point and styling with bespoke CSS. Property **r** may not exist, but it does work.
 
-- Javascript checked through JSHint.com
-    - One warning - 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
-    - The related code snippet (barry.strava.js lines 65 & 95) was provided by Tutor Support so am assuming it is a false positive and no action required.
+- Javascript checked through JSHint.com returns no errors
 
 ##### Bug
 
 - A bug that encountered was with the Bootswatch template I used, where the hamburger menu button collapse feature did not work as desired. On click the menu opened, but closed straight away.
 
-- The issue was resolved with - .navbar-collapse.collapse.in{display: block!important;}
+- The issue was resolved with - `.navbar-collapse.collapse.in{display: block!important;}`
 
 - CREDIT: https://stackoverflow.com/questions/25878450/bootstrap-collapsed-navbar-buggy-open
 
